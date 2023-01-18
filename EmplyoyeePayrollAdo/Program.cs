@@ -16,7 +16,8 @@ namespace EmplyoyeePayrollAdo
             // employee.CreateDatabase();
             //employee.CreateTable();
             //employee.GetAllEmplyoee();
-            employee.UpdateSalary();
+            //employee.UpdateSalary();
+            employee.UpdateSalaryStoredProcedure(350000,4);
         }
     }
 }

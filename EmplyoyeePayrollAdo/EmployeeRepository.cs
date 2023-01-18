@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -79,6 +80,44 @@ namespace EmplyoyeePayrollAdo
                     {
                         Console.WriteLine("Data not updated");
                         return "Data not Updated";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            finally { connection.Close(); }
+        }
+        public string UpdateSalaryStoredProcedure(long Salary, int id)
+        {
+           // EmplyoeeModel empmodel = new EmplyoeeModel();
+            try
+            {
+                using (connection)
+                {
+                    SqlCommand cmd = new SqlCommand(@"UpdateSalary", connection);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                   /* create proc UpdateSalary(@Salary bigint, @id int)
+                    as
+                    begin
+                    Update EmployeeTable set Salary = @Salary where id = @id;
+                    end*/
+                    cmd.Parameters.AddWithValue("@Salary", Salary);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    connection.Open();
+                    Console.WriteLine("Connection Established");
+                    var objreader = cmd.ExecuteNonQuery();
+                    if (objreader >= 1)
+                    {
+                        Console.WriteLine("Data was Updated");
+                        return "Data was Updated";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Data was not updated");
+                        return "Data was not Updated";
                     }
                 }
             }

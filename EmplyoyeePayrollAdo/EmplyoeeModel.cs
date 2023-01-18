@@ -8,11 +8,8 @@ using System.Xml.Linq;
 
 namespace EmplyoyeePayrollAdo
 {
-    internal class EmplyoeeModel
+    public class EmplyoeeModel
     {
-        /*Create Table EmployeeTable(id int primary key identity(1,1),Name varchar(200),Salary bigint, Startdate date,phone bigint," +
-                    "Emp_Address varchar(200),Department varchar(200),Gender varchar(10), Basic_Pay bigint," +
-                    "Deductions bigint,Taxable_Pay bigint,Income_Tax bigint,Net_Pay bigint )*/
         public int  id { get; set; }
         public string  name { get; set; }
         public long  Salary { get; set; }
