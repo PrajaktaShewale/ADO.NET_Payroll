@@ -15,7 +15,8 @@ namespace EmplyoyeePayrollAdo
             EmployeeRepository employee = new EmployeeRepository();
             // employee.CreateDatabase();
             //employee.CreateTable();
-            employee.GetAllEmplyoee();
+            //employee.GetAllEmplyoee();
+            employee.UpdateSalary();
         }
     }
 }

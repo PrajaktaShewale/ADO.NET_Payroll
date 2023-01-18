@@ -61,5 +61,33 @@ namespace EmplyoyeePayrollAdo
             }
             finally { connection.Close(); }
         }
+        public string UpdateSalary()
+        {
+            try
+            {
+                using (connection)
+                {
+                    SqlCommand cmd = new SqlCommand(@"Update EmployeeTable set Salary=300000 where id=4", connection);
+                    connection.Open();
+                    var objreader = cmd.ExecuteNonQuery();
+                    if (objreader >= 1)
+                    {
+                        Console.WriteLine("Data Updated");
+                        return "Data Updated";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Data not updated");
+                        return "Data not Updated";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            finally { connection.Close(); }
+        }
     }
 }
